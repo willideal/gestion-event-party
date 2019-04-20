@@ -1,0 +1,58 @@
+version: '3'
+services:
+  config-server:
+    build: config-server
+    ports:
+      - "8090:8090"
+    restart: always
+  eureka-server:
+    build: eureka-server
+    ports:
+      - "8092:8092"
+    depends_on:
+      - config-server
+    restart: always
+  gateway:
+    build: gateway
+    ports:
+      - "8095:8095"
+    depends_on:
+      - config-server
+    restart: always
+  microservice-user:
+    build: microservice-user
+    ports:
+      - "8086:8086"
+    depends_on:
+      - config-server
+    restart: always
+  microservice-event:
+    build: microservice-event
+    ports:
+      - "8087:8087"
+    depends_on:
+      - config-server
+    restart: always
+  microservice-client:
+    build: microservice-client
+    ports:
+      - "8085:8085"
+    depends_on:
+      - config-server
+    restart: always
+  mysqldb:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: soiree
+    restart: always
+  microservice-soiree:
+    build: microservice-soiree
+    ports:
+      - "8084:8084"
+    depends_on:
+      - config-server
+      - mysqldb
+    restart: always

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gestion Soiree</title>
+
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" />
+
+</head>
+<body>
+
+
+<div class="container">
+
+    <h1>Mes notifications</h1>
+
+    <div class="row">
+        <p>Cliquez sur user pour voir ces informations</p>
+        <div th:each="notif : ${notification}" class="col-md-4 my-1">
+             Message:   <p th:text= "${notif.message}"></p>
+              Type :  <p th:text= "${notif.typeNotif}"></p>
+
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

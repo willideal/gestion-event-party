@@ -1,0 +1,26 @@
+<div class="container" >
+  <div class="row">
+    <div class="col-sm-9 col-md-9 col-lg-10 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <div class="alert alert-success" role="alert">
+            <h1 class="card-title text-center">votre soiree</h1>
+          </div>
+          <form action="#" action="@{/soiree}" object="${soiree}" method="post">
+
+            <div class="form-label-group">
+              <input type="text" id="nom" name="nom" value="" class="form-control" placeholder="donnez un nom a votre soiree" required autofocus/>
+            </div>
+
+            <div class="form-label-group">
+              <input type="hidden" id="pseudo" name="pseudo" value="${pseudo != null} ? ${pseudo} : ''" required autofocus/>
+            </div>
+
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Create</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

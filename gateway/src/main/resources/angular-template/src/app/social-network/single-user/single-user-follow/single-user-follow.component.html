@@ -1,0 +1,6 @@
+<h2>{{ singleUser.pseudo }}</h2>
+<p>First name : {{ singleUser.firstName }}</p>
+<p>Last name : {{ singleUser.lastName }}</p>
+<p>Email : {{ singleUser.email }}</p>
+<button class="btn btn-success" (click)="onFollow(singleUser.pseudo)">Follow</button>
+<a routerLink="/users">Retour à la liste des utilisateurs</a>

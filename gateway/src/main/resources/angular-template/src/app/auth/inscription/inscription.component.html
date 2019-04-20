@@ -1,0 +1,56 @@
+<!--<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+      <div class="form-group">
+        <label for="pseudo">Pseudo</label>
+        <input type="text" class="form-control" id="pseudo" formControlName="pseudo">
+      </div>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" id="firstName" formControlName="firstName">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" id="lastName" formControlName="lastName">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" formControlName="email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="text" class="form-control" id="password" formControlName="password">
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="userForm.invalid">S'inscrire</button>
+    </form>
+  </div>
+</div>-->
+
+<div class="row">
+  <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+    <div class="card card-signin my-5">
+      <div class="card-body">
+        <h5 class="carld-title text-center">Inscription</h5>
+
+            <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+              <div class="form-label-group">
+                <input type="text" class="form-control" id="pseudo" formControlName="pseudo" placeholder="Pseudo">
+              </div>
+              <div class="form-label-group">
+                <input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="First Name">
+              </div>
+              <div class="form-label-group">
+                <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Last Name">
+              </div>
+              <div class="form-label-group">
+                <input type="text" class="form-control" id="email" formControlName="email" placeholder="Email">
+              </div>
+              <div class="form-label-group">
+                <input type="text" class="form-control" id="password" formControlName="password" placeholder="Password">
+              </div>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" [disabled]="userForm.invalid">S'inscrire</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

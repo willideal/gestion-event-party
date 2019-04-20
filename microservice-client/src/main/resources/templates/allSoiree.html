@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Your Soiree</title>
+
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" />
+
+</head>
+<body>
+
+
+<div class="container">
+
+    <h1>Toutes vos soirees</h1>
+
+    <div class="row">
+        <div th:each="soiree : ${soirees}" class="col-md-4 my-1">
+
+                <p th:text= "${soiree.nom}"></p>
+                <p th:text= "${soiree.participant}"></p>
+                <p th:text= "${soiree.evenementsPrivee}"></p>
+                <p><a th:href="@{|/soiree/${soiree.id}|}">plus dinfos</a></p>
+
+        </div><br/>
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

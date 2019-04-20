@@ -1,0 +1,41 @@
+<form xmlns:th="http://www.w3.org/1999/xhtml">
+  <div class="row col-md-2">
+    <div th:if="${msg != null}" > <p th:text= "${msg}"></p></div>
+
+  </div>
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-9 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <div class="alert alert-success" role="alert">
+            <h5 class="card-title text-center">Private Event</h5>
+            </div>
+            <!-- <form class="form-signin" action="/login" method="post" > -->
+            <form [formGroup]="eventPrivateForm" (ngSubmit)="onSubmitForm()">
+              <div class="form-label-group">
+                <input type="text" id="name" formControlName="name" class="form-control" placeholder="donnez un nom a votre evenement" autofocus/>
+              </div>
+              <div class="form-label-group">
+                <input type="text" id="dateEvent" formControlName="dateEvent" class="form-control" placeholder="10/10/2000" autofocus/>
+              </div>
+              <div class="form-label-group">
+                <input type="text" id="heure" formControlName="heure" class="form-control" placeholder="heure" autofocus/>
+              </div>
+              <div class="form-label-group">
+                <input type="text" id="lieu" formControlName="lieu" value="" class="form-control" placeholder="lieu" autofocus/>
+              </div>
+              <div class="form-label-group">
+                <input type="hidden" id="pseudo" formControlName="pseudo" value="{{sessionPseudo}}" autofocus/>
+              </div>
+
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" [disabled]="eventPrivateForm.invalid" type="submit">Create</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</form>
+
+
+

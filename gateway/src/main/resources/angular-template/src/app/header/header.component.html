@@ -1,0 +1,70 @@
+<!--<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active">
+        <a routerLink="">Soirées</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li routerLinkActive="active">
+        <a routerLink="auth/inscription">Créer un compte</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="auth/login">Connexion</a>
+      </li>
+    </ul>
+  </div>
+</nav>-->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">MyAPI</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="dashboard">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown" routerLinkActive="active">
+        <a class="nav-link dropdown-toggle" href="#" id="friends" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Amis
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="users">Utilisateurs</a>
+          <a class="dropdown-item" routerLink="friends">Mes amis</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="soiree" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Soirées
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="">Liste des Soirées</a>
+          <a class="dropdown-item" routerLink="create-soiree">Créer une soirée publique</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="evenement" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Évènements
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="event-public">Évènements publiques</a>
+          <a class="dropdown-item" routerLink="create-event-public">Créer un évènement publique</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="event-private">Évènements privés</a>
+          <a class="dropdown-item" routerLink="create-event-private">Créer un évènement privé</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="false">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+

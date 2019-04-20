@@ -1,0 +1,29 @@
+<form>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="alert alert-success" role="alert">
+        <h2>creer vos evenements open-data</h2>
+      </div>
+      <form>
+        <div class="container">
+          <div class="alert alert-success" role="alert">
+            <h1>Tous vos evenements open data</h1>
+          </div>
+
+          <div class="row">
+            <p>Cliquez sur user pour voir ces informations</p>
+            <div each="user : ${users}" class="col-md-4 my-1">
+              <a href="/detail-user/user.pseudo" >
+                <p>user.pseudo</p>
+
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+</form>
+

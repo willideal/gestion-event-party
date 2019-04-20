@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gestion Soiree</title>
+
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" />
+    <script type="text/javascript" src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="webjars/jquery/3.3.1-2/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $( document ).ready(function() {
+
+    /*        $("#signButton").click(function (event) {
+
+                //stop submit the form, we will post it manually.
+                event.preventDefault();
+
+                inscription_submit();
+
+            });
+
+            function inscription_submit() {
+
+                var user = {};
+                user["pseudo"] = $("#pseudo").val();
+                user["firstName"] = $("#firstName").val();
+                user["lastName"] = $("#lastName").val();
+                user["email"] = $("#email").val();
+                user["password"] = $("#password").val();
+                // search["username"] = $("#username").val();
+                // search["username"] = $("#username").val();
+
+                // $("#btn-search").prop("disabled", true);
+                console.log(user);
+
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    url: "/api/inscription",
+                    data: JSON.stringify(user),
+                    dataType: 'json'
+                }).done(function (data) {
+                    alert("toto");
+                    /*var json = "<h4>Ajax Response</h4><pre>"
+                            + JSON.stringify(data, null, 4) + "</pre>";
+                        $('#feedback').html(json);
+
+                        console.log("SUCCESS : ", data);
+                        $("#btn-search").prop("disabled", false);*/
+               /*     console.log("SUCCESS : ", data);
+                    // window.location.href = "/login";
+
+
+                }).fail(function (e) {
+                    console.log("fail : ", e);
+
+                    /*   var json = "<h4>Ajax Response</h4><pre>"
+                            + e.responseText + "</pre>";
+                        $('#feedback').html(json);
+
+                        console.log("ERROR : ", e);
+                        $("#btn-search").prop("disabled", false);*/
+
+            /*    });
+
+            }
+*/
+        });
+
+    </script>
+
+</head>
+<body>
+
+
+<div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Sign Up</h5>
+                        <form action="#" th:action="@{/inscription}" th:object="${user}" method="post">
+                            <div class="form-label-group">
+                            <input type="text" id="pseudo" name="pseudo" th:value="*{pseudo}" class="form-control" placeholder="Pseudo" required autofocus/>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="text" id="firstName" name="firstName" th:value="*{firstName}"  class="form-control" placeholder="FirstName" required autofocus>
+                            </div>
+                            <div class="form-label-group">
+                                <input type="text" id="lastName" name="lastName"  th:value="*{lastName}" class="form-control" placeholder="LastName" required autofocus>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="email" id="email" name="email"  th:value="*{email}" class="form-control" placeholder="Email" required autofocus>
+                            </div>
+                            <div class="form-label-group">
+                                <input type="password" id="password"  th:value="*{password}" name="password" class="form-control" placeholder="Password" required>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="hidden" id="roles"  value="user" name="roles" >
+                            </div>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" id="signButton" type="submit">Sign</button>
+
+                        </form>
+                        <!--   <form class="form-signin" action="/inscription" method="post">
+                               <div class="form-label-group">
+                                   <input type="text" name="pseudo" >
+                               </div>
+
+                               <div class="form-label-group">
+                                   <input type="text" id="firstName" name="firstName" class="form-control" placeholder="FirstName" required autofocus>
+                               </div>
+
+                               <div class="form-label-group">
+                                   <input type="text" id="lastName" name="lastName" class="form-control" placeholder="LastName" required autofocus>
+                               </div>
+
+                               <div class="form-label-group">
+                                   <input type="email" id="email" name="email" class="form-control" placeholder="Email" required autofocus>
+                               </div>
+
+                               <div class="form-label-group">
+                                   <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                               </div>
+
+                               <button class="btn btn-lg btn-primary btn-block text-uppercase" id="signButton" type="button">Sign in</button>
+                                </form>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+</body>
+</html>

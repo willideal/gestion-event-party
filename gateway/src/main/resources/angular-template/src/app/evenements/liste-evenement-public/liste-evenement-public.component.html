@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-sm-10 col-sm-offset-2">
+      <div class="alert alert-success" role="alert">
+        <h1>Tous vos evenements publique</h1>
+      </div>
+      <table>
+        <tr *ngFor="let eventOpenData of eventsOpenData">
+          <td>{{eventOpenData.titre}}</td>
+          <td>{{eventOpenData.address}}</td>
+          <td>{{eventOpenData.city}}</td>
+          <td>{{eventOpenData.placename}}</td>
+          <td><a href="{{eventOpenData.link}}" target="_blank"> {{eventOpenData.link}} </a></td>
+          <td><button class="btn btn-light"> Ajouter à votre soirée</button></td>
+        </tr>
+      </table>
+    </div>
+</div>

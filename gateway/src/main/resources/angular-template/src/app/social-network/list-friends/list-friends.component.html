@@ -1,0 +1,8 @@
+<div class="row">
+  <ul class="list-group" >
+    <li class="list-group-item" *ngFor="let friend of friends">
+        <h3><a [routerLink]="['unfollow', friend]"> {{ friend }} </a></h3>
+        <button class="btn btn-danger" (click)="onUnfollow(friend)">UnFollow</button>
+    </li>
+  </ul>
+</div>

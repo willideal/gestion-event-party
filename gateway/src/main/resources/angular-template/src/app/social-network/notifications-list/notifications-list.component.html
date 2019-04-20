@@ -1,0 +1,9 @@
+<div class="row">
+  <ul class="list-group" >
+    <li class="list-group-item" *ngFor="let notif of notifs" >
+        <p>{{ notif.message}}</p>
+        <!--<button class="btn btn-success" *ngIf="user.pseudo != friend" (click)="onFollow(user.pseudo)">Follow</button>
+        <button class="btn btn-danger" *ngIf="user.pseudo == friend">UnFollow</button>-->
+    </li>
+  </ul>
+</div>

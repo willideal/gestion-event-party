@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Details</title>
+
+    <link rel="stylesheet" type="text/css"
+          href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css"/>
+
+</head>
+<body>
+
+
+<div class="container">
+
+    <h1 class="text-center">Amis infos</h1>
+
+    <div class="row">
+        <div class="col-md-4 mx-auto mt-5 text-center">
+
+           Pseudo: <p th:text="${user.pseudo}" class="font-weight-bold"></p>
+           FirstName <p th:text="${user.firstName}"></p>
+           LastName <p th:text="${user.lastName}"></p>
+           Email <p th:text="${user.email}"></p>
+        </div>
+
+    </div>
+    <form action="#" th:action="@{/unfollow}" th:object="${follow}" method="post">
+
+        <div class="form-label-group">
+            <input type="hidden" id="pseudo" name="pseudo"
+                   th:value="${pseudo != null} ? ${pseudo} : ''"/>
+
+        </div>
+        <div class="form-label-group">
+            <input type="hidden" id="amis"  name="amis"
+                   th:value="${user.pseudo != null} ? ${user.pseudo} : ''"/>
+
+        </div>
+        <button th:if="${pseudo != user.pseudo}" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Unfollow</button>
+    </form>
+</div>
+
+
+<script type="text/javascript" src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

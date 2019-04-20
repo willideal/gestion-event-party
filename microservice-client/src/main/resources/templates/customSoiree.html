@@ -1,0 +1,245 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gestion Soiree</title>
+
+     <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" />
+    <!--  <link rel="stylesheet" type="text/css" href="/js/jquery.dataTables.min.css" />-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+    <!-- <script type="text/javascript" src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="webjars/jquery/3.3.1-2/jquery.min.js"></script> -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <!-- <script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
+     <script type="text/javascript" src="/js/jquery-3.3.1.js"></script> -->
+
+
+    <script type="text/javascript">
+        $( document ).ready(function() {
+          //  $('#dataOpendata').DataTable();
+           // $('.dataTables_length').addClass('bs-select');
+
+
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+
+            today = yyyy  + '-' + mm  + '-' + dd;
+            console.log("today "+today);
+         //   var urlOpenData = "https://data.orleans-metropole.fr/api/records/1.0/search/?dataset=evenements-publics-openagenda&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district";
+            var urlOpenDatas = "https://data.orleans-metropole.fr/api/records/1.0/search/?dataset=evenements-publics-openagenda&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=pricing_info&facet=updated_at&facet=city_district&refine.date_start="+today;
+         //   var urlOpenDatas = "https://data.orleans-metropole.fr/api/records/1.0/search/?dataset=evenements-publics-openagenda&rows=30&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district";
+        //alert(44);
+            $.ajax({
+                type: "GET",
+                url: urlOpenDatas
+                // data: JSON.stringify(user),
+                // dataType: 'json'
+            }).done(function (dataOpen) {
+                //alert("ok");
+              //  $(".message").html("Votre evenement a été bien ajouter à la soiree")
+                console.log(dataOpen);
+
+                console.log(dataOpen.records);
+                var donnees = dataOpen.records ;
+
+                var event = {};
+
+             var champs ;
+                for (var i = 0; i < donnees.length ; i++){
+                    champs = donnees[i].fields;
+                    $('#dataOpendata > tbody:last').
+                    append('<tr><td class="nr">'+champs.title+'</td>' +
+                        '<td>'+champs.address+'</td>' +
+                        '<td>'+champs.city+'</td>' +
+                        '<td><a href="'+champs.link+'" target="_blank">'+champs.link+'</a></td>'+
+                        '<td><button  class="addTosoiree">Ajouter votre soiree</button></td></tr>');
+
+                }
+
+
+            }).fail(function (e) {
+              //  alert("error")
+
+
+            });
+            var idSoiree = $("#iSoiree").val();
+
+            $("#dataOpendata").on('click', '.addTosoiree', function(event){
+                var $row = $(this).closest("tr");    // Find the row
+                 $tds = $row.find("td");             // Finds all children <td> elements
+                var event = {};
+
+                //var idS = window.localStorage[idSoiree];
+
+                $.each($tds, function(i) {
+                    if(i==0)
+                    event["titre"] = $(this).text();
+                    if(i==1)
+                        event["adress"] = $(this).text();
+                    if(i==2)
+                        event["placename"] = $(this).text();
+                    if(i==3)
+                        event["link"] = $(this).text();
+
+                });
+                event = JSON.stringify(event);
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    url: "event/openData",
+                    data: event,
+                    dataType: 'json'
+                }).done(function (id) {
+                  //  alert("ok");
+                   // console.log(id);
+                    ids = window.idSoiree;
+                   // console.log("idsoiree",ids);
+                   // console.log("idsoiree val",ids.value);
+                    idSoi = ids.value;
+                    //ajouter levenement à la soiree
+                    $.ajax({
+                        type: "PUT",
+                      //  contentType: "application/json",
+                        url: "/soiree/"+idSoi+"/eventopendata/"+id
+                      //  data: event,
+                     //   dataType: 'json'
+                    }).done(function (d) {
+                       // alert("ok");
+                       // console.log(d);
+                        $(".message").html("evenement open data bien ajouté")
+
+                    }).fail(function (e) {
+                        //   alert("error")
+
+
+                    });
+
+                }).fail(function (e) {
+                    //   alert("error")
+
+
+                });
+            });
+
+
+            $("#addEvent").click(function (event) {
+
+                        //stop submit the form, we will post it manually.
+                        event.preventDefault();
+
+                        custom_submit();
+
+                    });
+
+                    function custom_submit() {
+
+                        var user = {};
+                       // var idSoire = $("#iSoiree").val();
+                        ids = window.idSoiree;
+                        console.log("idsoiree",ids);
+                        console.log("idsoiree val",ids.value);
+                        idSoirr = ids.value;
+                        var idEventPrivate = $("#idEventPrivate").val();
+                        $.ajax({
+                            type: "PUT",
+                           // contentType: "application/json",
+                            url: "/soiree/"+idSoirr+"/eventPrivate/"+idEventPrivate
+                            // data: JSON.stringify(user),
+                           // dataType: 'json'
+                        }).done(function (data) {
+                            //alert("ok");
+                            $(".message").html("Votre evenement a été bien ajouter à la soiree")
+
+
+
+
+             }).fail(function (e) {
+                alert("error")
+
+
+                });
+
+            }
+
+        });
+
+    </script>
+
+</head>
+<body>
+
+<div class="row col-md-2">
+<div>Customiser votre soiree ici</div>
+</div>
+<div class="row col-md-2">
+    <p class="message"></p>
+</div>
+<h2>Event open data</h2>
+<div >
+   <!-- <table class="table" id="dataOpendata"> -->
+        <table id="dataOpendata" class="hover" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th scope="col">Titre</th>
+            <th scope="col">Adress</th>
+            <th scope="col">City</th>
+            <th scope="col">Lien</th>
+            <th scope="col">Ajouter à votre soiree</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+            <tfoot>
+            <tr>
+                <th scope="col">Titre</th>
+                <th scope="col">Adress</th>
+                <th scope="col">City</th>
+                <th scope="col">Lien</th>
+                <th scope="col">Ajouter à votre soiree</th>
+            </tr>
+            </tfoot>
+    </table>
+</div>
+<div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Customiser Votre soiree
+                        </h5>
+                        <div th:if="${nomSoiree != null}" >le nom  de votre soiree <p th:text= "${nomSoiree}"></p></div>
+
+                        <form class="form-signin" action="#" method="post">
+                     <!--   <form action="#" th:action="@{/soiree}" th:object="${soiree}" method="post"> -->
+
+                            <div class="form-label-group">
+                                <input type="hidden" id="idSoiree" name="idSoiree" th:value="${idSoiree != null} ? ${idSoiree} : ''" required autofocus/>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="hidden" id="pseudo" name="pseudo" th:value="${pseudo != null} ? ${pseudo} : ''" required autofocus/>
+                            </div>
+
+                            <div class="form-group blu-margin">
+                                <select class="form-control" th:field="${events}"  id="idEventPrivate" name="idEventPrivate">
+                                    <option value="0">select private Event</option>
+                                    <option th:each="event : ${events}" th:value="${event.id}" th:text="${event.name + '-' + event.lieu + '-' + event.heure }"></option>
+                                </select>
+                            </div>
+
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" id="addEvent">Ajouter</button>
+                             </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+<script type="text/javascript" src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

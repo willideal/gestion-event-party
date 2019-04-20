@@ -1,0 +1,43 @@
+<div class="row">
+  <ul class="list-group" >
+    <li class="list-group-item" *ngFor="let user of users" >
+      <div *ngIf="user.pseudo != sessionPseudo">
+        <h3><a [routerLink]="['follow', user.pseudo]"> {{ user.pseudo }} </a></h3>
+        <!--<button class="btn btn-success" *ngIf="user.pseudo != friend" (click)="onFollow(user.pseudo)">Follow</button>
+        <button class="btn btn-danger" *ngIf="user.pseudo == friend">UnFollow</button>-->
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!--<button (click)="test()">test</button>
+
+<table id="spreadsheet">
+  <tr *ngFor="let userFriend of userFriends">
+    <td class="row-number-column">{{userFriend.isFriend}}</td>
+    <td>
+      <button class="btn btn-success" *ngIf="userFriend.isFriend == false" (click)="onFollow(userFriend.pseudo)">Follow</button>
+      <button class="btn btn-danger" *ngIf="userFriend.isFriend == true">UnFollow</button>
+
+    </td>
+  </tr>
+</table>-->
+
+
+<!--<div class="row"
+  <div class="col-xs-12">
+    <h2>Liste des utilisateurs</h2>
+    <div class="list-group">
+      <button
+        class="list-group-item"
+        *ngFor="let user of users"
+        (click)="onViewUser(user.pseudo)">
+        <h3 class="list-group-item-heading">
+          {{ user.pseudo }}
+          <button class="btn btn-success">Follow</button>
+          <button class="btn btn-danger">UnFollow</button>
+        </h3>
+      </button>
+    </div>
+  </div>
+</div>-->

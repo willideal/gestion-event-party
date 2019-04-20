@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-9 col-lg-10 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <div class="alert alert-success" role="alert">
+            <h1 class="card-title text-center">Tous vos evenements prives</h1>
+          </div>
+  <div class="row">
+    <div class="col-md-4 my-1" *ngFor="let eventPrivate of eventsPrivate">
+      <ul class="nav navbar-nav">
+        <a [routerLink]="[eventPrivate.id]"><h2> {{eventPrivate.name}} </h2></a>
+      </ul>
+
+    </div><br/>
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
