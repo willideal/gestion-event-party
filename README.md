@@ -1,9 +1,7 @@
 ****************************************************************
 APPLICATION DE GESTION DES SOIREES AVEC UN MINI RESEAU SOCIAL
 ****************************************************************
-/*
-description ici plus tard
-*/
+
 Gestion event party micro-services
 1 - Objectif
 Le but de ce projet est de concevoir un système d’organisation de soirée dans un réseau social, déployé à l’aide d’une architecture de micro-services. Votre application doit permettre à un ensemble d'utilisateurs, enregistrés sur le réseau, de participer à une soirée proposée par un autre utilisateur.
